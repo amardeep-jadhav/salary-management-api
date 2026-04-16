@@ -9,4 +9,7 @@ RSpec.describe JobTitle, type: :model do
     it { should validate_uniqueness_of(:name).case_insensitive }
     it { should validate_inclusion_of(:level).in_array(%w[Junior Mid Senior Staff Principal Executive]) }
   end
+  describe 'associations' do
+    it { should have_many(:employees) }
+  end
 end

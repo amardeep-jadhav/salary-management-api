@@ -18,4 +18,8 @@ RSpec.describe Employee, type: :model do
 
     it { should validate_inclusion_of(:employment_type).in_array(%w[full_time part_time contract]) }
   end
+  describe 'associations' do
+    it { should belong_to(:department) }
+    it { should belong_to(:job_title) }
+  end
 end
