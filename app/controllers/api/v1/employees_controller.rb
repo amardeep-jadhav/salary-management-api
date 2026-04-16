@@ -21,7 +21,7 @@ module Api
         if result.success?
           render json: EmployeeBlueprint.render_as_hash(result.payload, view: :normal), status: :created
         else
-          render json: { errors: result.errors }, status: :unprocessable_entity
+          render json: { errors: result.errors }, status: :unprocessable_content
         end
       end
 
@@ -30,7 +30,7 @@ module Api
         if result.success?
           render json: EmployeeBlueprint.render_as_hash(result.payload, view: :normal), status: :ok
         else
-          render json: { errors: result.errors }, status: :unprocessable_entity
+          render json: { errors: result.errors }, status: :unprocessable_content
         end
       end
 
@@ -39,7 +39,7 @@ module Api
         if result.success?
           render json: { message: "Employee deactivated successfully" }, status: :ok
         else
-          render json: { errors: result.errors }, status: :unprocessable_entity
+          render json: { errors: result.errors }, status: :unprocessable_content
         end
       end
 

@@ -95,7 +95,7 @@ RSpec.describe "Api::V1::Employees", type: :request do
     context "with invalid params" do
       it "returns unprocessable entity" do
         post "/api/v1/employees", params: invalid_params
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
 
       it "returns error messages" do
@@ -120,7 +120,7 @@ RSpec.describe "Api::V1::Employees", type: :request do
       it "returns unprocessable entity" do
         patch "/api/v1/employees/#{employee.id}",
               params: { employee: { salary: -999 } }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end
