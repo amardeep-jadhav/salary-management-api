@@ -11,7 +11,8 @@ RSpec.describe "Api::V1::Insights", type: :request do
       country: 'US',
       salary: 80_000,
       currency: 'USD',
-      active: true
+      active: true,
+      hired_on: 30.days.ago
     )
     create_list(:employee, 2,
       department: department,
@@ -19,7 +20,8 @@ RSpec.describe "Api::V1::Insights", type: :request do
       country: 'IN',
       salary: 40_000,
       currency: 'USD',
-      active: true
+      active: true,
+      hired_on: 60.days.ago
     )
   end
 
