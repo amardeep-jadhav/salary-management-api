@@ -9,7 +9,12 @@
 
 # Ignore all environment files.
 /.env
-/db/.DS_Store/*
+
+# Mac OS
+.DS_Store
+db/.DS_Store
+**/.DS_Store
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
