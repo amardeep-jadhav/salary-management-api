@@ -4,6 +4,8 @@ class Employee < ApplicationRecord
   belongs_to :department
   belongs_to :job_title
 
+  scope :active, -> { where(active: true) }
+
   validates :full_name, presence: true
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false },

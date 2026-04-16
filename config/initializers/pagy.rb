@@ -1,2 +1,5 @@
-# Pagy 9+ configuration is set via Pagy::DEFAULT before it's frozen
-# Default limit is already 20, no changes needed
+require "pagy/extras/metadata"
+require "pagy/extras/overflow"
+
+Pagy::DEFAULT[:items] = 25
+Pagy::DEFAULT[:overflow] = :last_page

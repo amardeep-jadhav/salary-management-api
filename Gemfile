@@ -7,7 +7,7 @@ gem "puma", ">= 5.0"
 gem "bootsnap", require: false
 gem "rack-cors"
 gem "blueprinter"
-gem "pagy"
+gem "pagy", "~> 8.0"
 gem "activerecord-import"
 
 group :development, :test do
