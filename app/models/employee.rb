@@ -6,6 +6,8 @@ class Employee < ApplicationRecord
 
   scope :active, -> { where(active: true) }
 
+  after_commit :invalidate_insights_cache
+
   validates :full_name, presence: true
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false },
@@ -17,4 +19,10 @@ class Employee < ApplicationRecord
   validates :hired_on, presence: true
   validates :employment_type, presence: true,
                                inclusion: { in: EMPLOYMENT_TYPES }
+
+  private
+
+  def invalidate_insights_cache
+    Rails.cache.delete_matched("insights/*")
+  end
 end

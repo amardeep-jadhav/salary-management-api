@@ -10,6 +10,7 @@ gem "blueprinter"
 gem "pagy", "~> 8.0"
 gem "activerecord-import"
 gem "benchmark"
+gem "redis"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
