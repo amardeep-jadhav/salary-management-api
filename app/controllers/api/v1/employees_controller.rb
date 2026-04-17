@@ -8,7 +8,14 @@ module Api
         pagy, paginated = pagy(employees)
         render json: {
           data: EmployeeBlueprint.render_as_hash(paginated, view: :normal),
-          meta: pagy_metadata(pagy)
+          meta: {
+            current_page:  pagy.page,
+            total_pages:   pagy.pages,
+            total_count:   pagy.count,
+            per_page:      pagy.items,
+            next_page:     pagy.next,
+            prev_page:     pagy.prev
+          }
         }, status: :ok
       end
 
