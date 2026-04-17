@@ -60,7 +60,9 @@ class SalaryInsightsQuery
 
   def headcount_by_department
     Rails.cache.fetch(cache_key("headcount_by_department"), expires_in: CACHE_TTL) do
-      Employee.active
+      scope = Employee.active
+      scope = scope.where(country: @country) if @country.present?
+      scope
         .joins(:department)
         .select(
           "departments.name as department_name",
@@ -79,7 +81,9 @@ class SalaryInsightsQuery
 
   def salary_distribution
     Rails.cache.fetch(cache_key("salary_distribution"), expires_in: CACHE_TTL) do
-      salaries = Employee.active.pluck(:salary).map(&:to_f)
+      scope = Employee.active
+      scope = scope.where(country: @country) if @country.present?
+      salaries = scope.pluck(:salary).map(&:to_f)
       bands = {
         "0-30k"    => 0,
         "30k-60k"  => 0,
@@ -103,7 +107,9 @@ class SalaryInsightsQuery
 
   def top_paid_roles
     Rails.cache.fetch(cache_key("top_paid_roles"), expires_in: CACHE_TTL) do
-      Employee.active
+      scope = Employee.active
+      scope = scope.where(country: @country) if @country.present?
+      scope
         .joins(:job_title)
         .select(
           "job_titles.name as job_title_name",
@@ -123,7 +129,9 @@ class SalaryInsightsQuery
 
   def recent_hires
     Rails.cache.fetch(cache_key("recent_hires"), expires_in: CACHE_TTL) do
-      Employee.active
+      scope = Employee.active.where(hired_on: 90.days.ago..)
+      scope = scope.where(country: @country) if @country.present?
+      scope
         .where(hired_on: 90.days.ago..)
         .includes(:department, :job_title)
         .order(hired_on: :desc)
