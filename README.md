@@ -210,3 +210,6 @@ See [docs/DECISIONS.md](docs/DECISIONS.md) for full reasoning behind every techn
 | [docs/DECISIONS.md](docs/DECISIONS.md) | Technical decision log |
 | [docs/TDD_APPROACH.md](docs/TDD_APPROACH.md) | TDD strategy and commit approach |
 | [docs/PROMPTS.md](docs/PROMPTS.md) | AI tools usage |
+
+## Demo Video
+[Watch the demo on Loom](https://www.loom.com/share/7734f87d3bff4a16a92ab67e970a1b4f)
